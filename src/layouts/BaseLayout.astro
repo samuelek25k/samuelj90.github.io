@@ -1,0 +1,138 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Samuel J Mathew | Senior Software Engineer • Technical Architect • Developer Advocate",
+  description = "Engineering portfolio & architecture showcase. Specializing in high-scale distributed backends, AI-native automation, JVM architectures, and resilient developer tooling.",
+  image = "/assets/images/profile.png",
+  type = "website",
+  canonicalUrl = Astro.url.href,
+} = Astro.props;
+
+const siteUrl = "https://samuelj90.github.io";
+const absoluteImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+
+    <!-- Tailwind CDN Fallback (Guarantees all styles render whether opened directly as file:// or on HTTP server) -->
+    <script src="https://cdn.tailwindcss.com" is:inline></script>
+    <script is:inline>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f0fdfa',
+                100: '#ccfbf1',
+                200: '#99f6e4',
+                300: '#5eead4',
+                400: '#2dd4bf',
+                500: '#14b8a6',
+                600: '#0d9488',
+                700: '#0f766e',
+                800: '#115e59',
+                900: '#134e4a',
+              },
+            },
+            fontFamily: {
+              sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+              display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Standard Primary SEO Meta -->
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Samuel J Mathew" />
+    <meta name="keywords" content="Samuel J Mathew, Senior Software Engineer, Technical Architect, Developer Advocate, Enterprise Java, Distributed Systems, Microservices, Spring Boot, Astro, AI Engineering, Dubai, UAE" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/assets/images/profile.png" />
+    <meta name="theme-color" content="#0d9488" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteImageUrl} />
+    <meta property="og:site_name" content="Samuel J Mathew Engineering Portfolio" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteImageUrl} />
+
+    <!-- Schema.org Structured Data (JSON-LD) -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Samuel J Mathew",
+        "url": "https://samuelj90.github.io",
+        "image": "https://samuelj90.github.io/assets/images/profile.png",
+        "jobTitle": "Senior Software Engineer & Technical Architect",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Emirates Airlines"
+        },
+        "sameAs": [
+          "https://github.com/samuelj90",
+          "https://linkedin.com/in/samuelj90"
+        ],
+        "knowsAbout": [
+          "Enterprise Software Architecture",
+          "Distributed Systems",
+          "Microservices",
+          "Java & Spring Boot",
+          "AI Agent Harness Engineering",
+          "Event-Driven Architectures"
+        ]
+      }
+    </script>
+
+    <!-- Google Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Theme Initialization Script (Zero-Flash Dark Mode) -->
+    <script is:inline>
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen font-sans antialiased selection:bg-teal-600 selection:text-white transition-colors duration-200">
+    <slot />
+  </body>
+</html>
