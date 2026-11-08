@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
+import SectionContainer from '../components/SectionContainer.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import TimelineItem from '../components/TimelineItem.astro';
 import SkillBadge from '../components/SkillBadge.astro';
+import Button from '../components/Button.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).slice(0, 3);
@@ -151,7 +153,7 @@ const posts = (await getCollection('blog')).slice(0, 3);
     </section>
 
     <!-- Featured Architecture & Flagship Projects Section -->
-    <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <SectionContainer id="projects">
       <SectionHeader
         eyebrow="Engineering Portfolio"
         title="Featured Architecture & Systems"
@@ -328,10 +330,10 @@ const posts = (await getCollection('blog')).slice(0, 3);
           </div>
         </div>
       </div>
-    </section>
+    </SectionContainer>
 
-        <!-- Skills Section (Restored Original 7 Categorized Groups with High-Quality Shields) -->
-    <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+    <!-- Skills Section (Restored Original 7 Categorized Groups with High-Quality Shields) -->
+    <SectionContainer id="skills">
       <SectionHeader
         eyebrow="Toolbox"
         title="Technical Skills & Stack"
@@ -441,10 +443,10 @@ const posts = (await getCollection('blog')).slice(0, 3);
           </div>
         </div>
       </div>
-    </section>
+    </SectionContainer>
 
     <!-- Professional Journey Timeline -->
-    <section id="timeline" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+    <SectionContainer id="timeline">
       <SectionHeader
         eyebrow="Career Trajectory"
         title="Professional Journey"
@@ -452,7 +454,7 @@ const posts = (await getCollection('blog')).slice(0, 3);
       />
 
       <!-- Timeline Milestone List -->
-      <div class="relative pl-6 sm:pl-8 border-l-2 border-slate-200 dark:border-slate-800 ml-4 sm:ml-8 space-y-10">
+      <div class="max-w-4xl relative pl-6 sm:pl-8 border-l-2 border-slate-200 dark:border-slate-800 ml-4 sm:ml-8 space-y-10">
         <!-- Milestone 1 -->
         <TimelineItem
           title="Senior Software Engineer"
@@ -503,25 +505,19 @@ const posts = (await getCollection('blog')).slice(0, 3);
           tags={["Computer Science", "Algorithms", "Network Protocols", "Distributed Systems"]}
         />
       </div>
-    </section>
+    </SectionContainer>
 
     <!-- Engineering Blog & Technical Notes -->
-    <section id="blog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12 gap-4">
-        <SectionHeader
-          eyebrow="Knowledge Sharing"
-          title="Technical Blog"
-          description="In-depth architectural breakdowns, AI engineering benchmarks, distributed system design, and production post-mortems."
-          class="mb-0 sm:mb-0"
-        />
-        <!-- Secondary outlined style for 'see all' button -->
-        <a
-          href="/blog"
-          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white text-sm font-medium transition-all shadow-sm w-fit shrink-0 focus:ring-2 focus:ring-teal-500 focus:outline-none"
-        >
+    <SectionContainer id="blog">
+      <SectionHeader
+        eyebrow="Knowledge Sharing"
+        title="Technical Blog"
+        description="In-depth architectural breakdowns, AI engineering benchmarks, distributed system design, and production post-mortems."
+      >
+        <Button href="/blog" variant="secondary" slot="action">
           Browse All Articles →
-        </a>
-      </div>
+        </Button>
+      </SectionHeader>
 
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Article 1 -->
@@ -585,18 +581,18 @@ const posts = (await getCollection('blog')).slice(0, 3);
           </div>
         </article>
       </div>
-    </section>
+    </SectionContainer>
 
     <!-- GitHub Stats & Contact Section ("Let's talk") -->
-    <section id="contact" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 border-t border-slate-200 dark:border-slate-800">
+    <SectionContainer id="contact">
       <SectionHeader
         eyebrow="Collaboration & Outreach"
-        title="Let's talk"
+        title="Let's Talk"
         description="Open to architecture consulting, senior engineering roles, and open-source collaboration."
       />
 
       <!-- Theme-Aware GitHub Engineering Snapshot (Fixed overlapping dots, same tokens) -->
-      <div class="bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 shadow-sm mb-12 border border-slate-200 dark:border-slate-800 transition-colors">
+      <div class="bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 shadow-sm mb-12 border border-slate-200 dark:border-slate-800 transition-colors max-w-5xl">
         <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
           <div class="flex items-center gap-2">
             <!-- Terminal title bar dots -->
@@ -640,7 +636,7 @@ const posts = (await getCollection('blog')).slice(0, 3);
       </div>
 
       <!-- Professional Engagement Channels with Exact Requested Labels -->
-      <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div class="grid sm:grid-cols-3 gap-6 max-w-5xl">
         <!-- Channel 1: Email -->
         <a href="mailto:samuelj90@gmail.com?subject=[GitHub]%20Architecture%20Inquiry" class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-teal-500 hover:shadow-md transition-all group flex flex-col items-center text-center">
           <div class="w-12 h-12 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -671,12 +667,12 @@ const posts = (await getCollection('blog')).slice(0, 3);
           <span class="text-xs font-semibold text-teal-600 dark:text-teal-400 group-hover:underline">Browse repositories →</span>
         </a>
       </div>
-    </section>
+    </SectionContainer>
   </main>
 
   <!-- Footer with subtle 1px border at ~7% opacity -->
   <footer class="border-t border-slate-900/[0.07] dark:border-white/[0.07] bg-white dark:bg-slate-950 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <p>&copy; 2026 Samuel J Mathew • Senior Software Engineer • Technical Architect</p>
     </div>
   </footer>

@@ -3,7 +3,6 @@ interface Props {
   eyebrow: string;
   title: string;
   description: string;
-  align?: 'left' | 'center';
   class?: string;
 }
 
@@ -11,19 +10,30 @@ const {
   eyebrow,
   title,
   description,
-  align = 'left',
   class: className = '',
 } = Astro.props;
+
+const hasAction = Astro.slots.has('action');
 ---
 
-<div class={`mb-10 sm:mb-12 ${align === 'center' ? 'text-center max-w-3xl mx-auto' : 'max-w-3xl'} ${className}`}>
-  <span class="text-xs font-semibold tracking-wider uppercase text-teal-600 dark:text-teal-400 font-mono">
-    {eyebrow}
-  </span>
-  <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-2 text-slate-900 dark:text-white font-display tracking-tight text-balance">
-    {title}
-  </h2>
-  <p class="text-slate-600 dark:text-slate-400 mt-3 text-base sm:text-lg leading-relaxed">
-    {description}
-  </p>
+<div class={`mb-10 sm:mb-12 ${hasAction ? 'flex flex-col sm:flex-row sm:items-end justify-between gap-6' : ''} ${className}`}>
+  <div class="max-w-3xl">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+      <span class="text-xs font-semibold tracking-wider uppercase text-teal-600 dark:text-teal-400 font-mono">
+        {eyebrow}
+      </span>
+    </div>
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white font-display tracking-tight text-balance">
+      {title}
+    </h2>
+    <p class="text-slate-600 dark:text-slate-400 mt-3 text-base sm:text-lg leading-relaxed text-balance">
+      {description}
+    </p>
+  </div>
+  {hasAction && (
+    <div class="shrink-0 w-fit">
+      <slot name="action" />
+    </div>
+  )}
 </div>
