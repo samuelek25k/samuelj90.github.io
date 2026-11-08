@@ -54,11 +54,11 @@ const articleSchema = {
         }`}>
           {post.data.category}
         </span>
-        <span>&bull;</span>
+        <span>•</span>
         <time datetime={post.data.date}>{post.data.date}</time>
         {post.data.readingTime && (
           <>
-            <span>&bull;</span>
+            <span>•</span>
             <span>{post.data.readingTime}</span>
           </>
         )}
@@ -77,10 +77,10 @@ const articleSchema = {
 
     <div class="pt-8 border-t border-slate-200 dark:border-slate-800 mt-12 flex items-center justify-between">
       <a href="/blog" class="text-sm font-semibold text-teal-600 dark:text-teal-400 hover:underline">
-        &larr; Back to All Articles
+        ← Back to All Articles
       </a>
       <a href="/#contact" class="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
-        Discuss Product &rarr;
+        Discuss Product →
       </a>
     </div>
   </article>

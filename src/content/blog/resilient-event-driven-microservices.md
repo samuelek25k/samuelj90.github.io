@@ -59,12 +59,119 @@ A common architectural trap occurs when a service must simultaneously update its
     </defs>
   </svg>
   <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-3 font-mono">
-    Figure 1: Transactional Outbox &bull; Kafka Streaming &bull; Idempotent Consumer Flow
+    Figure 1: Transactional Outbox • Kafka Streaming • Idempotent Consumer Flow
   </figcaption>
 </figure>
 
 ### The Transactional Outbox Pattern
 To guarantee consistency without heavy two-phase commit (2PC) protocols, record state changes and outbound messages within the same local database transaction using an Outbox table. A separate publisher thread or Change Data Capture (CDC) mechanism then streams events reliably to Kafka.
 
+### Implementation: Transactional Outbox in Spring Boot 3
+
+Here is the production implementation of the transactional outbox pattern ensuring atomic persistence of the business entity alongside the outbox event payload:
+
+<div class="my-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-sm">
+  <div class="px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-mono">
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-semibold">
+      <svg class="w-4 h-4 text-slate-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      <span>OrderService.java • Transactional Outbox Pattern</span>
+    </div>
+    <a href="https://gist.github.com/samuelj90/98793fcd72d3478b5a5519975fcb193b" target="_blank" rel="noopener noreferrer" class="text-teal-600 dark:text-teal-400 hover:underline flex items-center gap-1 font-sans font-medium">
+      View Gist on GitHub →
+    </a>
+  </div>
+</div>
+
+```java
+@Service
+@Transactional
+public class OrderService {
+
+    private final OrderRepository orderRepository;
+    private final OutboxEventRepository outboxRepository;
+    private final ObjectMapper objectMapper;
+
+    public OrderService(OrderRepository orderRepository,
+                        OutboxEventRepository outboxRepository,
+                        ObjectMapper objectMapper) {
+        this.orderRepository = orderRepository;
+        this.outboxRepository = outboxRepository;
+        this.objectMapper = objectMapper;
+    }
+
+    public Order createOrder(OrderRequest request) {
+        // 1. Commit Domain State Locally
+        Order order = new Order(UUID.randomUUID(), request.getCustomerId(), request.getTotalAmount());
+        orderRepository.save(order);
+
+        // 2. Insert Outbox Event in the Same Database Transaction
+        OutboxEvent event = new OutboxEvent(
+            UUID.randomUUID(),
+            "ORDER_CREATED",
+            order.getId().toString(),
+            objectMapper.writeValueAsString(order),
+            Instant.now()
+        );
+        outboxRepository.save(event);
+
+        return order;
+    }
+}
+```
+
 ## Idempotent Consumers
 Network re-deliveries are guaranteed in distributed networks. Every consumer must implement deterministic deduplication using idempotent keys stored with short-lived distributed caches or database unique constraints.
+
+### Implementation: Idempotent Kafka Consumer with Redis
+
+<div class="my-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-sm">
+  <div class="px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-mono">
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-semibold">
+      <svg class="w-4 h-4 text-slate-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      <span>PaymentEventListener.java • Idempotent Consumer</span>
+    </div>
+    <a href="https://gist.github.com/samuelj90/dc1e2292269a30de763a1c6874fbc526" target="_blank" rel="noopener noreferrer" class="text-teal-600 dark:text-teal-400 hover:underline flex items-center gap-1 font-sans font-medium">
+      View Gist on GitHub →
+    </a>
+  </div>
+</div>
+
+```java
+@Component
+public class PaymentEventListener {
+
+    private final RedisTemplate<String, String> redisTemplate;
+    private final PaymentLedgerService ledgerService;
+    private static final Duration DEDUPLICATION_TTL = Duration.ofDays(7);
+
+    public PaymentEventListener(RedisTemplate<String, String> redisTemplate,
+                                PaymentLedgerService ledgerService) {
+        this.redisTemplate = redisTemplate;
+        this.ledgerService = ledgerService;
+    }
+
+    @KafkaListener(topics = "order-events", groupId = "payment-service-group")
+    public void onOrderEvent(@Payload OrderEvent event, Acknowledgment ack) {
+        String idempotencyKey = "processed-event:" + event.getEventId();
+
+        // Atomic Check-and-Set: Process only if key does not exist
+        Boolean isFirstDelivery = redisTemplate.opsForValue()
+            .setIfAbsent(idempotencyKey, "PROCESSING", DEDUPLICATION_TTL);
+
+        if (Boolean.TRUE.equals(isFirstDelivery)) {
+            try {
+                ledgerService.processPayment(event);
+                redisTemplate.opsForValue().set(idempotencyKey, "COMPLETED", DEDUPLICATION_TTL);
+                ack.acknowledge();
+            } catch (Exception ex) {
+                redisTemplate.delete(idempotencyKey);
+                throw ex;
+            }
+        } else {
+            // Duplicate delivery detected: acknowledge and discard safely
+            ack.acknowledge();
+        }
+    }
+}
+```
+

@@ -17,10 +17,10 @@ const posts = (await getCollection('blog')).sort(
   <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="mb-12">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/80 border border-teal-200 dark:border-teal-800/60 text-teal-800 dark:text-teal-300 text-xs font-semibold mb-4">
-        <span>⚡</span> Technical Writing &bull; Architecture Notes
+        <span>⚡</span> Technical Writing • Architecture Notes
       </div>
       <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight font-display mb-4">
-        Engineering Insights &amp; Architecture Log
+        Engineering Insights & Architecture Log
       </h1>
       <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
         Deep dives on distributed computing, enterprise Java, reactive frontend architectures, and autonomous AI engineering harnesses.
@@ -35,11 +35,11 @@ const posts = (await getCollection('blog')).sort(
             <span class="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/80 text-teal-800 dark:text-teal-300 font-semibold border border-transparent dark:border-teal-800/60">
               {post.data.category}
             </span>
-            <span>&bull;</span>
+            <span>•</span>
             <time datetime={post.data.date}>{post.data.date}</time>
             {post.data.readingTime && (
               <>
-                <span>&bull;</span>
+                <span>•</span>
                 <span>{post.data.readingTime}</span>
               </>
             )}
@@ -61,7 +61,7 @@ const posts = (await getCollection('blog')).sort(
               ))}
             </div>
             <a href={`/blog/${post.id}`} class="text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 transition-colors">
-              Read Article &rarr;
+              Read Article →
             </a>
           </div>
         </article>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  name: string;
+  logo: string;
+  color?: string;
+}
+
+const { name, logo, color = 'currentColor' } = Astro.props;
+
+// Use shields.io with high quality badge rendering matching user request
+const encodedName = encodeURIComponent(name);
+const encodedLogo = encodeURIComponent(logo);
+const badgeUrl = color && color !== 'currentColor'
+  ? `https://img.shields.io/badge/${encodedName}-20232A?style=social&logo=${encodedLogo}&logoColor=${color}`
+  : `https://img.shields.io/badge/${encodedName}-20232A?style=social&logo=${encodedLogo}`;
+---
+
+<div class="inline-flex items-center hover:scale-105 transition-transform duration-150">
+  <img
+    src={badgeUrl}
+    alt={name}
+    title={name}
+    loading="lazy"
+    class="h-5 sm:h-6 object-contain"
+  />
+</div>
