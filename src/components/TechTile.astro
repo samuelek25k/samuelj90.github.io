@@ -1,0 +1,24 @@
+---
+interface Props {
+  name: string;
+  category?: string;
+}
+
+const { name, category } = Astro.props;
+
+// Generate 2-character monogram fallback
+const monogram = name
+  .split(/[\s.-]/)
+  .map(part => part[0])
+  .slice(0, 2)
+  .join('')
+  .toUpperCase();
+---
+
+<div class="inline-flex items-center gap-2.5 px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/70 border border-slate-200/90 dark:border-slate-700/70 hover:border-teal-500/50 hover:bg-white dark:hover:bg-slate-800 transition-all text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 group">
+  <!-- Monogram Fallback / Icon Frame -->
+  <span class="w-6 h-6 rounded flex items-center justify-center font-mono font-bold text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 group-hover:bg-teal-600 group-hover:text-white transition-colors shrink-0">
+    {monogram}
+  </span>
+  <span class="truncate">{name}</span>
+</div>

@@ -36,6 +36,39 @@ module.exports = {
 ```
 
 ### 2. Custom DOM Event Brokers
+
+<figure class="my-8 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-4 sm:p-6 shadow-sm">
+  <svg class="w-full min-w-[580px] h-auto text-slate-800 dark:text-slate-100" viewBox="0 0 700 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Micro-app 1 (Booking) -->
+    <rect x="30" y="30" width="160" height="70" rx="8" class="fill-white dark:fill-slate-800 stroke-teal-500" stroke-width="1.5"/>
+    <text x="110" y="55" text-anchor="middle" class="fill-slate-900 dark:fill-white font-bold font-sans text-xs">Booking App (React)</text>
+    <text x="110" y="75" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px] font-mono">Dispatches: session:update</text>
+
+    <!-- Micro-app 2 (Loyalty) -->
+    <rect x="510" y="30" width="160" height="70" rx="8" class="fill-white dark:fill-slate-800 stroke-indigo-500" stroke-width="1.5"/>
+    <text x="590" y="55" text-anchor="middle" class="fill-slate-900 dark:fill-white font-bold font-sans text-xs">Loyalty App (Angular)</text>
+    <text x="590" y="75" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px] font-mono">Subscribes: session:update</text>
+
+    <!-- Central Event Broker -->
+    <rect x="180" y="125" width="340" height="55" rx="10" class="fill-slate-900 dark:fill-slate-950 stroke-teal-400" stroke-width="1.5"/>
+    <text x="350" y="148" text-anchor="middle" class="fill-white font-bold font-sans text-xs">Window CustomEvent Broker (DOM Bus)</text>
+    <text x="350" y="165" text-anchor="middle" class="fill-teal-300 font-mono text-[10px]">Zero Direct Imports &bull; Pure Decoupling</text>
+
+    <!-- Flow Arrows -->
+    <path d="M110 100 L110 152 L180 152" class="stroke-teal-500" stroke-width="2" marker-end="url(#arrow3)"/>
+    <path d="M520 152 L590 152 L590 100" class="stroke-indigo-500" stroke-width="2" marker-end="url(#arrow3)"/>
+
+    <defs>
+      <marker id="arrow3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 8 5 L 0 9 z" class="fill-teal-500"/>
+      </marker>
+    </defs>
+  </svg>
+  <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-3 font-mono">
+    Figure 1: CustomEvent DOM Event Broker &bull; Micro-Frontend State Sharing Without Coupling
+  </figcaption>
+</figure>
+
 To allow disparate micro-apps (e.g. an Angular legacy app and a modern React micro-frontend) to communicate without direct dependencies, employ window-level CustomEvent channels with strictly typed payloads:
 
 ```typescript
