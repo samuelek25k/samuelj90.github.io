@@ -1,0 +1,81 @@
+<mxfile host="Electron" modified="2026-11-09T04:01:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="crypto-pipeline" name="Crypto Pipeline Architecture">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="960" pageHeight="380" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- APPLICATION LAYER -->
+        <mxCell id="app_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#f8f9fa;strokeColor=#495057;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="220" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_badge" value="MICROSERVICE LAYER" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#495057;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="55" y="35" width="190" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_title" value="&lt;b&gt;Cloud Application&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_data" value="• Sensitive Session Tokens&lt;br&gt;• PII / Payment Attributes&lt;br&gt;• Stream Multi-GB Payloads" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#ced4da;fontSize=11;fontFamily=Helvetica;align=left;spacingLeft=10;fontColor=#495057;" vertex="1" parent="1">
+          <mxGeometry x="50" y="110" width="200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="app_risk" value="&lt;font color=&quot;#e03131&quot;&gt;&lt;b&gt;Zero 3rd-Party CVE Risk&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#fff5f5;strokeColor=#ffa8a8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="200" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ARROW APP TO CRYPTO-UTIL -->
+        <mxCell id="arrow_app_util" value="&lt;b&gt;Typed API Calls&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0ca678;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#0ca678;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="app_box" target="util_box">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- CRYPTO-UTIL ENGINE -->
+        <mxCell id="util_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#e6fcf5;strokeColor=#0ca678;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="340" y="50" width="280" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="util_badge" value="ZERO-DEPENDENCY WRAPPER" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#0ca678;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="365" y="35" width="230" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="util_title" value="&lt;b&gt;crypto-util Core&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+          <mxGeometry x="360" y="70" width="240" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="util_f1" value="• AES-256-CBC (Auto Random IV)" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=11;fontFamily=Helvetica;align=left;spacingLeft=10;fontColor=#212529;" vertex="1" parent="1">
+          <mxGeometry x="360" y="105" width="240" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="util_f2" value="• PBKDF2 with HMAC-SHA-512" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=11;fontFamily=Helvetica;align=left;spacingLeft=10;fontColor=#212529;" vertex="1" parent="1">
+          <mxGeometry x="360" y="145" width="240" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="util_f3" value="• RSA-4096 OAEP Keypair Encryption" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=11;fontFamily=Helvetica;align=left;spacingLeft=10;fontColor=#212529;" vertex="1" parent="1">
+          <mxGeometry x="360" y="185" width="240" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="util_f4" value="• Streaming Hash Pipelines" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=11;fontFamily=Helvetica;align=left;spacingLeft=10;fontColor=#212529;" vertex="1" parent="1">
+          <mxGeometry x="360" y="225" width="240" height="32" as="geometry"/>
+        </mxCell>
+
+        <!-- ARROW UTIL TO OPENSSL -->
+        <mxCell id="arrow_util_ssl" value="&lt;b&gt;node:crypto Bindings&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1971c2;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#1971c2;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="util_box" target="ssl_box">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- NATIVE OPENSSL ENGINE -->
+        <mxCell id="ssl_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#edf2ff;strokeColor=#3b5bdb;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="700" y="50" width="220" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssl_badge" value="HARDWARE ACCELERATION" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#3b5bdb;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="710" y="35" width="200" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssl_title" value="&lt;b&gt;Node.js C++ OpenSSL&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+          <mxGeometry x="710" y="70" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssl_item1" value="• CPU AES-NI Extensions" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#91a7ff;fontSize=11;fontFamily=Helvetica;align=left;spacingLeft=10;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="710" y="110" width="200" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssl_item2" value="• AVX-512 Vector Hashing" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#91a7ff;fontSize=11;fontFamily=Helvetica;align=left;spacingLeft=10;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="710" y="155" width="200" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssl_speed" value="&lt;b&gt;&amp;lt; 100ms Test Suite Run&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ebfbee;strokeColor=#51cf66;fontSize=11;fontFamily=Helvetica;fontColor=#2b8a3e;" vertex="1" parent="1">
+          <mxGeometry x="710" y="200" width="200" height="40" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

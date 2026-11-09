@@ -60,23 +60,17 @@ However, using shared libraries for application-level communication can graduall
 
 For communication between independently implemented micro-apps, such as an Angular application and a React micro-frontend, browser-native events provide a lightweight integration boundary.
 
-![Micro-frontend state sharing through a DOM event broker](/diagrams/micro-frontends/event-broker.svg)
-
-*Figure 1: Micro-frontend state sharing through a CustomEvent DOM event broker.*
-
-The SVG can be exported from draw.io with the diagram data embedded. This allows the same SVG to be rendered directly by the browser while remaining editable in draw.io.
-
-The communication model is intentionally simple:
-
-```text
-Publisher
-   ↓
-CustomEvent
-   ↓
-Browser DOM
-   ↓
-Subscriber
-```
+<figure class="my-8 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-4 sm:p-6 shadow-sm">
+  <img
+    src="/diagrams/micro-frontends/event-broker.svg"
+    alt="Micro-frontend state sharing through a DOM event broker"
+    class="w-full h-auto rounded-lg mx-auto max-w-4xl"
+    loading="lazy"
+  />
+  <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
+    Figure 1: Micro-frontend state sharing through a CustomEvent DOM event broker (editable with embedded XML)
+  </figcaption>
+</figure>
 
 Neither micro-app needs to import the other.
 

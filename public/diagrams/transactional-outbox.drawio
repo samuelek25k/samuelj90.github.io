@@ -1,0 +1,86 @@
+<mxfile host="Electron" modified="2026-11-09T03:58:30.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="transactional-outbox" name="Transactional Outbox Pattern">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="420" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ORDER SERVICE BOUNDARY -->
+        <mxCell id="order_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#f8f9fa;strokeColor=#495057;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="240" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="order_badge" value="PRODUCER MICROSERVICE" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#495057;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="25" width="200" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="order_title" value="&lt;b&gt;Order Service&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="200" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Business DB -->
+        <mxCell id="order_db" value="&lt;b&gt;Business DB Table&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#0ca678&quot;&gt;1. Local Commit (State)&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#868e96;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Outbox Table -->
+        <mxCell id="outbox_db" value="&lt;b&gt;Transactional Outbox Table&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#0ca678&quot;&gt;2. Atomic Insert (Event)&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;sketch=1;curveFitting=1;jiggle=2;fillColor=#e6fcf5;strokeColor=#0ca678;strokeWidth=1.5;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="195" width="200" height="75" as="geometry"/>
+        </mxCell>
+
+        <!-- Transaction Bracket -->
+        <mxCell id="atomic_bracket" value="&lt;b&gt;Atomic Database&lt;br&gt;Transaction Boundary&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#868e96;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="278" width="200" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ARROW TO KAFKA (CDC / Poller) -->
+        <mxCell id="arrow_cdc" value="&lt;b&gt;CDC / Poller&lt;br&gt;(Debezium)&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0ca678;strokeWidth=2.5;strokeDasharray=4 4;sketch=1;curveFitting=1;jiggle=2;fontColor=#0ca678;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="outbox_db" target="kafka_box">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- APACHE KAFKA CLUSTER -->
+        <mxCell id="kafka_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#212529;strokeColor=#0ca678;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="370" y="100" width="220" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka_title" value="&lt;b&gt;Apache Kafka Cluster&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontFamily=Helvetica;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="380" y="115" width="200" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka_topic" value="topic: order-events" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#343a40;strokeColor=#20c997;fontColor=#20c997;fontFamily=monospace;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="150" width="180" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka_partitions" value="Partition 0 | Partition 1 | Partition 2&lt;br&gt;&lt;font color=&quot;#adb5bd&quot;&gt;Strict Key-Ordered Streaming&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#495057;strokeColor=#6c757d;fontColor=#f8f9fa;fontSize=10;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="390" y="200" width="180" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- ARROW KAFKA -> PAYMENT CONSUMER -->
+        <mxCell id="arrow_consume" value="&lt;b&gt;Consumer Group&lt;br&gt;Streaming I/O&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4263eb;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#4263eb;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="kafka_box" target="consumer_box">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- PAYMENT SERVICE BOUNDARY -->
+        <mxCell id="consumer_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#f8f9fa;strokeColor=#495057;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="680" y="40" width="240" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="consumer_badge" value="IDEMPOTENT CONSUMER" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#4263eb;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="700" y="25" width="200" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="consumer_title" value="&lt;b&gt;Payment Service&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+          <mxGeometry x="700" y="60" width="200" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Idempotency Store -->
+        <mxCell id="idempotency_db" value="&lt;b&gt;Idempotency Store (Redis/DB)&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#4263eb&quot;&gt;3. Check event_id Exists?&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;sketch=1;curveFitting=1;jiggle=2;fillColor=#edf2ff;strokeColor=#4263eb;strokeWidth=1.5;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="700" y="100" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Payment Ledger -->
+        <mxCell id="ledger_db" value="&lt;b&gt;Payment Ledger Table&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#2b8a3e&quot;&gt;4. Process Once &amp; ACK&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;sketch=1;curveFitting=1;jiggle=2;fillColor=#ebfbee;strokeColor=#2b8a3e;strokeWidth=1.5;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="700" y="195" width="200" height="75" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="guarantee_badge" value="&lt;b&gt;Guarantee: Exactly-Once Processing Semantics&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#2b8a3e;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="700" y="278" width="200" height="30" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

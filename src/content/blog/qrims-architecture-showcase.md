@@ -19,16 +19,32 @@ In physical warehouses, healthcare facilities, and IT asset depots, connectivity
 
 QRIMS is structured as a decoupled multi-tier system:
 
+<figure class="my-8 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-4 sm:p-6 shadow-sm">
+  <img
+    src="/diagrams/qrims-architecture.svg"
+    alt="QRIMS Decoupled Multi-Tier Architecture Diagram"
+    class="w-full h-auto rounded-lg mx-auto max-w-4xl"
+    loading="lazy"
+  />
+  <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
+    Figure 1: QRIMS Multi-Tenant Cloud Architecture • Mobile Scanner, NestJS Reactive Engine & Next.js Console (editable with embedded XML)
+  </figcaption>
+</figure>
+
 ### 1. Flutter High-Speed Mobile Scanner
-- Employs hardware-accelerated camera feeds with debounced visual feedback.
-- Offline-first cache: operations queue locally in SQLite and reconcile automatically with exponential backoff upon network restoration.
+- **Hardware-Accelerated Scanning**: Employs camera feeds with debounced visual feedback for sub-second barcode and QR acquisition.
+- **Offline-First Resilience**: Transactions queue locally in an encrypted SQLite store and reconcile automatically via exponential backoff upon network restoration.
+- **Biometric Field Authentication**: Secure local token caching paired with hardware biometric unlock.
 
 ### 2. NestJS Reactive Backend
-- **Strict Multi-Tenancy**: Data segregation enforced at the schema and query layer via tenant identity tokens.
-- **Audit Ledger**: Every check-in, check-out, and status mutation produces an immutable audit record.
+- **Strict Multi-Tenancy**: Data segregation enforced at the schema and query layer via tenant identity claims embedded in verified JWTs.
+- **Immutable Mutation Audit Ledger**: Every check-in, check-out, and status mutation produces an append-only audit record.
+- **PostgreSQL Connection Pooling**: Optimized connection routing with query isolation per tenant.
 
 ### 3. Next.js 14 Web Command Console
-- Server-side rendered analytics and fleet overview with real-time SSE (Server-Sent Events) live updates.
+- **Real-Time Fleet Telemetry**: Server-side rendered analytics and fleet overview powered by Server-Sent Events (SSE).
+- **Role-Based Access Control**: Granular permissions distinguishing warehouse managers, field operators, and tenant auditors.
+- **Vector QR Generation**: Instant dynamic label generation in batch SVG/PDF formats ready for thermal printing.
 
 ## Open Source Repository & Production CI
 

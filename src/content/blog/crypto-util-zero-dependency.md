@@ -15,6 +15,18 @@ Modern supply chain vulnerabilities in npm dependencies represent one of the mos
 
 Crypto-Util wraps the battle-tested, hardware-accelerated C++ OpenSSL engine built into Node.js, providing an ergonomic, enterprise-ready API with zero external dependencies:
 
+<figure class="my-8 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-4 sm:p-6 shadow-sm">
+  <img
+    src="/diagrams/crypto-util-pipeline.svg"
+    alt="Crypto-Util Architecture and Native Hardware Pipeline"
+    class="w-full h-auto rounded-lg mx-auto max-w-4xl"
+    loading="lazy"
+  />
+  <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
+    Figure 1: crypto-util Zero-Dependency Architecture • Application Layer to Node.js Hardware OpenSSL (editable with embedded XML)
+  </figcaption>
+</figure>
+
 - **Symmetric Encryption**: AES-256-CBC with cryptographic initialization vector (IV) randomization.
 - **Key Derivation (PBE)**: PBKDF2 with HMAC-SHA-512 and configurable salt iterations to defend against rainbow table attacks.
 - **Asymmetric Encryption**: RSA 2048/4096-bit public-key encryption and private-key decryption with PKCS#1 v2.1 OAEP padding.

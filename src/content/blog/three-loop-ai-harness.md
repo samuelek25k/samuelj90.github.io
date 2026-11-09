@@ -19,46 +19,15 @@ Most agent failures do not stem from reasoning deficiencies, but rather from unc
 
 ## The Three Loops: Project, Feature, and Task
 
-<figure class="my-8 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-4 sm:p-6 shadow-sm">
-  <svg class="w-full min-w-[580px] h-auto text-slate-800 dark:text-slate-100" viewBox="0 0 700 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Loop 1: Project Loop -->
-    <rect x="20" y="30" width="190" height="140" rx="10" class="fill-white dark:fill-slate-800 stroke-teal-500" stroke-width="1.5"/>
-    <text x="115" y="55" text-anchor="middle" class="fill-teal-700 dark:fill-teal-400 font-bold font-sans text-xs uppercase tracking-wide font-mono">Loop 1: Project</text>
-    <text x="115" y="78" text-anchor="middle" class="fill-slate-900 dark:fill-white font-semibold text-xs">Repo Governance</text>
-    <text x="115" y="98" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px]">• Invariant Rules (AGENTS.md)</text>
-    <text x="115" y="115" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px]">• AST Repository Catalog</text>
-    <text x="115" y="132" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px]">• Clean Author Commit State</text>
-
-    <!-- Arrow 1 to 2 -->
-    <path d="M210 100 L255 100" class="stroke-teal-600 dark:stroke-teal-400" stroke-width="2" marker-end="url(#arrow2)"/>
-
-    <!-- Loop 2: Feature Loop -->
-    <rect x="255" y="30" width="190" height="140" rx="10" class="fill-white dark:fill-slate-800 stroke-indigo-500" stroke-width="1.5"/>
-    <text x="350" y="55" text-anchor="middle" class="fill-indigo-700 dark:fill-indigo-400 font-bold font-sans text-xs uppercase tracking-wide font-mono">Loop 2: Feature</text>
-    <text x="350" y="78" text-anchor="middle" class="fill-slate-900 dark:fill-white font-semibold text-xs">Contract Verification</text>
-    <text x="350" y="98" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px]">• Frozen Interface Schema</text>
-    <text x="350" y="115" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px]">• Spec-First Unit Tests</text>
-    <text x="350" y="132" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px]">• Mock Contract Boundary</text>
-
-    <!-- Arrow 2 to 3 -->
-    <path d="M445 100 L490 100" class="stroke-teal-600 dark:stroke-teal-400" stroke-width="2" marker-end="url(#arrow2)"/>
-
-    <!-- Loop 3: Task Loop -->
-    <rect x="490" y="30" width="190" height="140" rx="10" class="fill-white dark:fill-slate-800 stroke-emerald-500" stroke-width="1.5"/>
-    <text x="585" y="55" text-anchor="middle" class="fill-emerald-700 dark:fill-emerald-400 font-bold font-sans text-xs uppercase tracking-wide font-mono">Loop 3: Task</text>
-    <text x="585" y="78" text-anchor="middle" class="fill-slate-900 dark:fill-white font-semibold text-xs">Deterministic Gates</text>
-    <text x="585" y="98" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px]">• Atomic Code Mutations</text>
-    <text x="585" y="115" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px]">• Zero-Token Pre-Commit Hooks</text>
-    <text x="585" y="132" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px]">• Pass / Fail CI Gates</text>
-
-    <defs>
-      <marker id="arrow2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 1 L 8 5 L 0 9 z" class="fill-teal-600 dark:fill-teal-400"/>
-      </marker>
-    </defs>
-  </svg>
-  <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-3 font-mono">
-    Figure 1: The Three-Loop AI Engineering Harness • Project, Feature & Task Loops
+<figure class="my-8 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-4 sm:p-6 shadow-sm">
+  <img
+    src="/diagrams/three-loop-harness.svg"
+    alt="The Three-Loop AI Engineering Harness Architecture Diagram"
+    class="w-full h-auto rounded-lg mx-auto max-w-4xl"
+    loading="lazy"
+  />
+  <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
+    Figure 1: The Three-Loop AI Engineering Harness • Hand-drawn draw.io diagram (editable with embedded XML)
   </figcaption>
 </figure>
 

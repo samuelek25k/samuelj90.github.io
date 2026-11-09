@@ -1,0 +1,81 @@
+<mxfile host="Electron" modified="2026-11-09T03:59:30.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="qrims-architecture" name="QRIMS Architecture">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="960" pageHeight="400" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- TIER 1: FLUTTER MOBILE APP -->
+        <mxCell id="mobile_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#e7f5ff;strokeColor=#1c7ed6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="240" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="mobile_badge" value="TIER 1: FIELD SCANNER" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#1c7ed6;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="35" width="200" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="mobile_title" value="&lt;b&gt;Flutter Mobile Client&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="mobile_item1" value="• 60fps Hardware Camera Feed" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#a5d8ff;fontSize=11;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="60" y="115" width="200" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="mobile_item2" value="• SQLite Offline-First Queue" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#a5d8ff;fontSize=11;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="60" y="165" width="200" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="mobile_item3" value="• Exponential Sync Retry" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#a5d8ff;fontSize=11;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="60" y="215" width="200" height="38" as="geometry"/>
+        </mxCell>
+
+        <!-- ARROW MOBILE TO BACKEND -->
+        <mxCell id="arrow_mob_backend" value="&lt;b&gt;mTLS / HTTPS&lt;br&gt;JWT Tenant Token&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1c7ed6;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#1c7ed6;fontSize=10;fontFamily=Helvetica;" edge="1" parent="1" source="mobile_box" target="backend_box">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- TIER 2: NESTJS REACTIVE BACKEND -->
+        <mxCell id="backend_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#f8f0fc;strokeColor=#ae3ec9;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="50" width="260" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="backend_badge" value="TIER 2: REACTIVE ENGINE" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ae3ec9;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="385" y="35" width="210" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="backend_title" value="&lt;b&gt;NestJS Backend Gateway&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+          <mxGeometry x="380" y="70" width="220" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="backend_item1" value="• Strict Tenant Isolation Interceptor" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#eebefa;fontSize=11;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="380" y="115" width="220" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="backend_item2" value="• Immutable Mutation Audit Ledger" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#eebefa;fontSize=11;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="380" y="165" width="220" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="backend_item3" value="• PostgreSQL + Multi-Schema Store" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#eebefa;fontSize=11;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="380" y="215" width="220" height="38" as="geometry"/>
+        </mxCell>
+
+        <!-- ARROW BACKEND TO WEB CONSOLE -->
+        <mxCell id="arrow_backend_web" value="&lt;b&gt;Real-time SSE &amp;&lt;br&gt;REST APIs&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ae3ec9;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#ae3ec9;fontSize=10;fontFamily=Helvetica;" edge="1" parent="1" source="backend_box" target="web_box">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- TIER 3: NEXT.JS WEB DASHBOARD -->
+        <mxCell id="web_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#e6fcf5;strokeColor=#0ca678;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="700" y="50" width="240" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="web_badge" value="TIER 3: COMMAND CONSOLE" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#0ca678;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="720" y="35" width="200" height="26" as="geometry"/>
+        </mxCell>
+        <mxCell id="web_title" value="&lt;b&gt;Next.js 14 Console&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+          <mxGeometry x="720" y="70" width="200" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="web_item1" value="• Live Fleet &amp; Asset Status Overview" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=11;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="720" y="115" width="200" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="web_item2" value="• Role-Based Access Control (RBAC)" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=11;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="720" y="165" width="200" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="web_item3" value="• Instant QR Code Generation" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=11;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="720" y="215" width="200" height="38" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
