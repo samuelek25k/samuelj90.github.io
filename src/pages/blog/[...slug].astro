@@ -2,7 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import GistInline from '../../components/GistInline.astro';
-import { replaceGistPlaceholders } from '../../utils/gist';
+import MermaidRenderer from '../../components/MermaidRenderer.astro';
+import { processBlogContent } from '../../utils/gist';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const rendered = await render(post);
 const { Content } = rendered;
-const postHtml = post.rendered?.html ? await replaceGistPlaceholders(post.rendered.html) : null;
+const postHtml = post.rendered?.html ? await processBlogContent(post.rendered.html) : null;
 
 const isProductArticle = post.data.category === 'Product Architecture' || post.data.tags.includes('Product Showcase');
 
@@ -92,4 +93,6 @@ const articleSchema = {
       </a>
     </div>
   </article>
+
+  <MermaidRenderer />
 </BaseLayout>

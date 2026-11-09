@@ -14,6 +14,55 @@ In distributed architectures, asynchronous communication through event streaming
 A common architectural trap occurs when a service must simultaneously update its local SQL database and emit an event to Kafka. If the database commit succeeds but the message broker publish fails, the system enters an inconsistent state.
 
 
+<figure class="my-8 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-sm excalidraw-container">
+  <div class="px-4 py-2 border-b border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+    <div class="flex items-center gap-2 font-mono font-medium">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-violet-500"></span>
+      <span>Excalidraw Diagram • The Dual-Write Failure Mode</span>
+    </div>
+  </div>
+  <div class="p-4 sm:p-6 overflow-x-auto flex justify-center">
+    <img
+      src="/diagrams/excalidraw/dual-write-problem.svg"
+      alt="Excalidraw Diagram showing Dual-Write Failure Mode"
+      class="w-full h-auto max-w-2xl rounded-lg"
+      loading="lazy"
+    />
+  </div>
+  <figcaption class="px-4 pb-4 text-xs text-center text-slate-500 dark:text-slate-400 font-mono">
+    Figure 1: The Dual-Write Problem • Why direct broker publishing leads to silent data divergence
+  </figcaption>
+</figure>
+
+### Architecture Sequence Flow
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor Client
+  participant OrderSvc as Order Service
+  participant DB as Database (SQL + Outbox)
+  participant CDC as Debezium / CDC Poller
+  participant Kafka as Apache Kafka
+  participant PaymentSvc as Payment Consumer
+
+  Client->>OrderSvc: POST /orders
+  critical Atomic Local Transaction
+    OrderSvc->>DB: INSERT into orders
+    OrderSvc->>DB: INSERT into outbox_table
+  end
+  OrderSvc-->>Client: 201 Created (Instant ACK)
+  
+  loop Continuous Stream
+    CDC->>DB: Read Outbox ChangeLog
+    CDC->>Kafka: Stream OrderCreated Event
+  end
+
+  Kafka->>PaymentSvc: Consume Message
+  PaymentSvc->>PaymentSvc: Idempotency Key Validation
+  PaymentSvc->>PaymentSvc: Settle Ledger & ACK
+```
+
 <figure class="my-8 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-4 sm:p-6 shadow-sm">
   <img
     src="/diagrams/transactional-outbox.svg"
@@ -22,7 +71,7 @@ A common architectural trap occurs when a service must simultaneously update its
     loading="lazy"
   />
   <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
-    Figure 1: Transactional Outbox • Kafka Streaming • Idempotent Consumer Flow (editable with embedded XML)
+    Figure 2: Transactional Outbox Component Blueprint • Hand-drawn draw.io diagram (editable with embedded XML)
   </figcaption>
 </figure>
 

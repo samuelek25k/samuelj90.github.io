@@ -100,3 +100,48 @@ export async function replaceGistPlaceholders(contentHtml: string): Promise<stri
 
   return resultHtml;
 }
+
+/**
+ * Transforms standard markdown ```mermaid code blocks into styled interactive Mermaid containers
+ */
+export function transformMermaidBlocks(contentHtml: string): string {
+  // Matches <pre ... data-language="mermaid" ...>...</pre> or <pre ...class="...language-mermaid...">...
+  const mermaidRegex = /<pre[^>]*?(?:data-language="mermaid"|class="[^"]*language-mermaid[^"]*")[^>]*>([\s\S]*?)<\/pre>/gi;
+
+  return contentHtml.replace(mermaidRegex, (fullMatch, innerContent) => {
+    // Strip inner HTML tags (such as <span class="line"><span style="...">)
+    const stripped = innerContent.replace(/<[^>]+>/g, '');
+
+    // Decode HTML entities
+    const rawCode = stripped
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .trim();
+
+    return `
+<figure class="my-8 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-sm mermaid-diagram-container">
+  <div class="px-4 py-2 border-b border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+    <div class="flex items-center gap-2 font-mono font-medium">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+      <span>Mermaid Architecture Flow</span>
+    </div>
+  </div>
+  <div class="p-4 sm:p-6 overflow-x-auto flex justify-center">
+    <pre class="mermaid not-prose text-sm">${rawCode}</pre>
+  </div>
+</figure>`;
+  });
+}
+
+/**
+ * Processes all content extensions (Gists, Mermaid, Excalidraw) in post HTML
+ */
+export async function processBlogContent(contentHtml: string): Promise<string> {
+  const withGists = await replaceGistPlaceholders(contentHtml);
+  const withMermaid = transformMermaidBlocks(withGists);
+  return withMermaid;
+}
+
