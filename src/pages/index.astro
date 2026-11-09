@@ -8,7 +8,9 @@ import SkillBadge from '../components/SkillBadge.astro';
 import Button from '../components/Button.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog')).slice(0, 3);
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf())
+  .slice(0, 3);
 ---
 
 <BaseLayout
@@ -520,66 +522,34 @@ const posts = (await getCollection('blog')).slice(0, 3);
       </SectionHeader>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Article 1 -->
-        <article class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all flex flex-col group">
-          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
-            <span class="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/80 text-teal-800 dark:text-teal-300 border border-transparent dark:border-teal-800/60 font-medium">Distributed Systems</span>
-            <time datetime="2026-11-01">Nov 2026</time>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors mb-2 font-display">
-            Designing Resilient Event-Driven Microservices with Kafka & Spring Boot 3
-          </h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-1">
-            Practical patterns for transactional outboxes, idempotency keys, and consumer lag mitigation in high-throughput enterprise systems.
-          </p>
-          <!-- 1px subtle border with baseline aligned footer -->
-          <div class="flex items-baseline justify-between pt-4 border-t border-slate-900/[0.07] dark:border-white/[0.07] text-xs text-slate-500 dark:text-slate-400">
-            <span>8 min read</span>
-            <a href="/blog/resilient-event-driven-microservices" class="font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors">
-              Read Article →
-            </a>
-          </div>
-        </article>
-
-        <!-- Article 2 -->
-        <article class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all flex flex-col group">
-          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
-            <span class="px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-transparent dark:border-emerald-800/60 font-medium">AI & Tooling</span>
-            <time datetime="2026-10-24">Oct 2026</time>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors mb-2 font-display">
-            The Three-Loop AI Engineering Harness: From PR to Deterministic Verification
-          </h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-1">
-            How agentic workflows require strict repo-first harness loops, contract tests, and linting boundaries to eliminate hallucination in CI.
-          </p>
-          <div class="flex items-baseline justify-between pt-4 border-t border-slate-900/[0.07] dark:border-white/[0.07] text-xs text-slate-500 dark:text-slate-400">
-            <span>6 min read</span>
-            <a href="/blog/three-loop-ai-harness" class="font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors">
-              Read Article →
-            </a>
-          </div>
-        </article>
-
-        <!-- Article 3 -->
-        <article class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all flex flex-col group">
-          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
-            <span class="px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/80 text-indigo-800 dark:text-indigo-300 border border-transparent dark:border-indigo-800/60 font-medium">Architecture</span>
-            <time datetime="2026-09-18">Sep 2026</time>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors mb-2 font-display">
-            Micro-Frontends in Enterprise Portals: State Sharing Without Tight Coupling
-          </h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-1">
-            Analyzing Web Components, Module Federation, and custom DOM event brokers for cross-team autonomy in airline portals.
-          </p>
-          <div class="flex items-baseline justify-between pt-4 border-t border-slate-900/[0.07] dark:border-white/[0.07] text-xs text-slate-500 dark:text-slate-400">
-            <span>10 min read</span>
-            <a href="/blog/micro-frontends-enterprise-state" class="font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors">
-              Read Article →
-            </a>
-          </div>
-        </article>
+        {posts.map((post) => {
+          const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
+            month: 'short',
+            year: 'numeric',
+          });
+          return (
+            <article class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all flex flex-col group">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
+                <span class="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/80 text-teal-800 dark:text-teal-300 border border-transparent dark:border-teal-800/60 font-medium">
+                  {post.data.category}
+                </span>
+                <time datetime={post.data.date}>{formattedDate}</time>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors mb-2 font-display">
+                {post.data.title}
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-1">
+                {post.data.description}
+              </p>
+              <div class="flex items-baseline justify-between pt-4 border-t border-slate-900/[0.07] dark:border-white/[0.07] text-xs text-slate-500 dark:text-slate-400">
+                <span>{post.data.readingTime || '5 min read'}</span>
+                <a href={`/blog/${post.id}`} class="font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors">
+                  Read Article →
+                </a>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </SectionContainer>
 

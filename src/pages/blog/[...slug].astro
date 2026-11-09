@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
+import GistInline from '../../components/GistInline.astro';
+import { replaceGistPlaceholders } from '../../utils/gist';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -12,7 +14,9 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const rendered = await render(post);
+const { Content } = rendered;
+const postHtml = post.rendered?.html ? await replaceGistPlaceholders(post.rendered.html) : null;
 
 const isProductArticle = post.data.category === 'Product Architecture' || post.data.tags.includes('Product Showcase');
 
@@ -72,7 +76,11 @@ const articleSchema = {
     </div>
 
     <div class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 space-y-6 leading-relaxed">
-      <Content />
+      {postHtml ? (
+        <Fragment set:html={postHtml} />
+      ) : (
+        <Content components={{ GistInline, GistEmbed: GistInline }} />
+      )}
     </div>
 
     <div class="pt-8 border-t border-slate-200 dark:border-slate-800 mt-12 flex items-center justify-between">
