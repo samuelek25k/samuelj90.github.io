@@ -185,4 +185,4 @@ For cross-application ambient state, a small typed event protocol provides a pra
 - domain state stays behind domain boundaries;
 - shared runtime dependencies remain deliberate;
 - cross-application communication uses stable contracts;
-- authentication credentials remain owned by the icro-frontends to cooperate without requiring them to become one application again.
+- authentication credentials remain owned by the platform shell, allowing micro-frontends to cooperate without requiring them to become one tightly coupled application again.
