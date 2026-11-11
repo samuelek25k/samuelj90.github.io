@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2026-11-09T03:58:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+<mxfile host="Electron" modified="2026-11-11T10:48:00.000Z" agent="Mozilla/5.0" version="24.7.17">
   <diagram id="three-loop-harness" name="Three Loop Harness">
     <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="400" background="#ffffff" math="0" shadow="0">
       <root>
@@ -12,21 +12,21 @@
         <mxCell id="loop1_badge" value="LOOP 1: PROJECT LOOP" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#0ca678;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="65" y="35" width="210" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="loop1_title" value="&lt;b&gt;Repo Governance&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+        <mxCell id="loop1_title" value="&lt;b&gt;Repo Governance &amp; Docs&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
           <mxGeometry x="60" y="80" width="220" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="loop1_item1" value="• Invariant Rules (AGENTS.md)" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+        <mxCell id="loop1_item1" value="• Invariants &amp; Rules (AGENTS.md)" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
           <mxGeometry x="60" y="125" width="220" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="loop1_item2" value="• AST Repository Catalog" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+        <mxCell id="loop1_item2" value="• `documentation-and-adrs`" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
           <mxGeometry x="60" y="175" width="220" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="loop1_item3" value="• Clean Author Commit State" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+        <mxCell id="loop1_item3" value="• `security-and-hardening`" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
           <mxGeometry x="60" y="225" width="220" height="40" as="geometry"/>
         </mxCell>
 
         <!-- ARROW 1 -> 2 -->
-        <mxCell id="arrow1_2" value="&lt;b&gt;Spec Scope&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0ca678;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#0ca678;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="loop1_box" target="loop2_box">
+        <mxCell id="arrow1_2" value="&lt;b&gt;Spec &amp; Plans&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0ca678;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#0ca678;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="loop1_box" target="loop2_box">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
@@ -37,21 +37,21 @@
         <mxCell id="loop2_badge" value="LOOP 2: FEATURE LOOP" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#4263eb;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="385" y="35" width="210" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="loop2_title" value="&lt;b&gt;Contract Verification&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+        <mxCell id="loop2_title" value="&lt;b&gt;Spec-Driven Alignment&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
           <mxGeometry x="380" y="80" width="220" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="loop2_item1" value="• Frozen Interface Schema" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#91a7ff;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+        <mxCell id="loop2_item1" value="• `spec-driven-development`" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#91a7ff;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
           <mxGeometry x="380" y="125" width="220" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="loop2_item2" value="• Spec-First Unit Tests" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#91a7ff;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+        <mxCell id="loop2_item2" value="• `planning.md` &amp; Task Breakdown" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#91a7ff;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
           <mxGeometry x="380" y="175" width="220" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="loop2_item3" value="• Mock Contract Boundary" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#91a7ff;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+        <mxCell id="loop2_item3" value="• `api-and-interface-design`" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#91a7ff;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
           <mxGeometry x="380" y="225" width="220" height="40" as="geometry"/>
         </mxCell>
 
         <!-- ARROW 2 -> 3 -->
-        <mxCell id="arrow2_3" value="&lt;b&gt;Atomic Tasks&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4263eb;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#4263eb;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="loop2_box" target="loop3_box">
+        <mxCell id="arrow2_3" value="&lt;b&gt;Ordered Tasks&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4263eb;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#4263eb;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="loop2_box" target="loop3_box">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
@@ -62,21 +62,21 @@
         <mxCell id="loop3_badge" value="LOOP 3: TASK LOOP" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#2b8a3e;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="705" y="35" width="210" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="loop3_title" value="&lt;b&gt;Deterministic Gates&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+        <mxCell id="loop3_title" value="&lt;b&gt;TDD &amp; Atomic Edits&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
           <mxGeometry x="700" y="80" width="220" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="loop3_item1" value="• Atomic Code Mutations" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#8ce99a;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+        <mxCell id="loop3_item1" value="• `incremental-implementation`" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#8ce99a;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
           <mxGeometry x="700" y="125" width="220" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="loop3_item2" value="• Zero-Token Pre-Commit Hooks" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#8ce99a;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+        <mxCell id="loop3_item2" value="• `test-driven-development`" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#8ce99a;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
           <mxGeometry x="700" y="175" width="220" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="loop3_item3" value="• Pass / Fail CI Gates" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#8ce99a;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+        <mxCell id="loop3_item3" value="• Zero-Token Pre-Commit Gates" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#8ce99a;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
           <mxGeometry x="700" y="225" width="220" height="40" as="geometry"/>
         </mxCell>
 
         <!-- FEEDBACK LOOP BACK -->
-        <mxCell id="feedback_arrow" value="&lt;b&gt;Deterministic Feedback Loop (Automated Test &amp; CI Gate)&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#2b8a3e;strokeWidth=2;strokeDasharray=4 4;sketch=1;curveFitting=1;jiggle=2;fontColor=#2b8a3e;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="loop3_box" target="loop1_box">
+        <mxCell id="feedback_arrow" value="&lt;b&gt;Continuous Verification &amp; Release (`shipping-and-launch`)&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#2b8a3e;strokeWidth=2;strokeDasharray=4 4;sketch=1;curveFitting=1;jiggle=2;fontColor=#2b8a3e;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="loop3_box" target="loop1_box">
           <mxGeometry x="-0.03" y="15" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="810" y="340"/>

@@ -1,63 +1,63 @@
-<mxfile host="Electron" modified="2026-11-11T10:11:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+<mxfile host="Electron" modified="2026-11-11T10:47:00.000Z" agent="Mozilla/5.0" version="24.7.17">
   <diagram id="scenario-prioritization" name="Autonomous Scenario Prioritization">
     <mxGraphModel dx="1200" dy="750" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="560" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
 
-        <!-- STAGE 1: TRIAGE & ROUTING -->
+        <!-- STAGE 1: TRIAGE & SCOPE -->
         <mxCell id="stage1_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#f8f0fc;strokeColor=#ae3ec9;strokeWidth=2;shadow=0;" vertex="1" parent="1">
           <mxGeometry x="40" y="50" width="260" height="270" as="geometry"/>
         </mxCell>
-        <mxCell id="stage1_badge" value="STAGE 1: INTENT TRIAGE" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ae3ec9;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
+        <mxCell id="stage1_badge" value="STAGE 1: INTENT &amp; SCOPE" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ae3ec9;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="65" y="35" width="210" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="stage1_title" value="&lt;b&gt;Classification &amp; Urgency&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+        <mxCell id="stage1_title" value="&lt;b&gt;Scope Check &amp; Routing&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
           <mxGeometry x="60" y="75" width="220" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="stage1_item1" value="• Context &amp; Prompt Extraction" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#e599f7;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
-          <mxGeometry x="60" y="115" width="220" height="42" as="geometry"/>
+        <mxCell id="stage1_item1" value="• Intent Clarification (`interview-me`)" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#e599f7;fontSize=11.5;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="55" y="115" width="230" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="stage1_item2" value="• Urgency / Scope Detection" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#e599f7;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
-          <mxGeometry x="60" y="167" width="220" height="42" as="geometry"/>
+        <mxCell id="stage1_item2" value="• Scope Check (`spec-driven-dev`)" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#e599f7;fontSize=11.5;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="55" y="167" width="230" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="stage1_item3" value="• Clarifying Fallback Gate" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#e599f7;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
-          <mxGeometry x="60" y="219" width="220" height="42" as="geometry"/>
+        <mxCell id="stage1_item3" value="• Context Budgeting (`context-eng`)" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#e599f7;fontSize=11.5;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="55" y="219" width="230" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="stage1_sub" value="Clarify on ambiguous intent" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#868e96;fontStyle=2;" vertex="1" parent="1">
+        <mxCell id="stage1_sub" value="Filters ambiguity before code edits" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#868e96;fontStyle=2;" vertex="1" parent="1">
           <mxGeometry x="60" y="270" width="220" height="20" as="geometry"/>
         </mxCell>
 
         <!-- ARROW 1 -> 2 -->
-        <mxCell id="arrow1_2" value="&lt;b&gt;Triaged Scenario&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ae3ec9;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#ae3ec9;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="stage1_box" target="stage2_box">
+        <mxCell id="arrow1_2" value="&lt;b&gt;Triaged Scope&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ae3ec9;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#ae3ec9;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="stage1_box" target="stage2_box">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
-        <!-- STAGE 2: PRECEDENCE ENGINE -->
+        <!-- STAGE 2: PRECEDENCE TIERS -->
         <mxCell id="stage2_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#edf2ff;strokeColor=#4263eb;strokeWidth=2;shadow=0;" vertex="1" parent="1">
           <mxGeometry x="360" y="50" width="260" height="270" as="geometry"/>
         </mxCell>
         <mxCell id="stage2_badge" value="STAGE 2: PRECEDENCE TIERS" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#4263eb;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="385" y="35" width="210" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="stage2_title" value="&lt;b&gt;Hierarchical Precedence&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
+        <mxCell id="stage2_title" value="&lt;b&gt;Hierarchy &amp; Governance&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
           <mxGeometry x="380" y="75" width="220" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="stage2_item1" value="• T1: Safety &amp; Invariants" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#fff5f5;strokeColor=#ff8787;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#c92a2a;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="115" width="220" height="42" as="geometry"/>
+        <mxCell id="stage2_item1" value="• T1: `security-and-hardening`" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#fff5f5;strokeColor=#ff8787;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#c92a2a;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="375" y="115" width="230" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="stage2_item2" value="• T2: Core Task Execution" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#e7f5ff;strokeColor=#74c0fc;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#1864ab;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="167" width="220" height="42" as="geometry"/>
+        <mxCell id="stage2_item2" value="• T2: `test-driven-dev` &amp; `tdd`" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#e7f5ff;strokeColor=#74c0fc;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#1864ab;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="375" y="167" width="230" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="stage2_item3" value="• T3: Presentation &amp; Style" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#e6fcf5;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#087f5b;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="219" width="220" height="42" as="geometry"/>
+        <mxCell id="stage2_item3" value="• T3: `documentation-and-adrs`" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#e6fcf5;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#087f5b;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="375" y="219" width="230" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="stage2_sub" value="T1 unconditionally overrides T2 &amp; T3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#868e96;fontStyle=2;" vertex="1" parent="1">
+        <mxCell id="stage2_sub" value="T1 (Security) unconditionally dominates T2 &amp; T3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#868e96;fontStyle=2;" vertex="1" parent="1">
           <mxGeometry x="380" y="270" width="220" height="20" as="geometry"/>
         </mxCell>
 
         <!-- ARROW 2 -> 3 -->
-        <mxCell id="arrow2_3" value="&lt;b&gt;Utility Optimization&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4263eb;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#4263eb;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="stage2_box" target="stage3_box">
+        <mxCell id="arrow2_3" value="&lt;b&gt;Contract Gates&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4263eb;strokeWidth=2.5;sketch=1;curveFitting=1;jiggle=2;fontColor=#4263eb;fontSize=11;fontFamily=Helvetica;" edge="1" parent="1" source="stage2_box" target="stage3_box">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 
@@ -65,22 +65,22 @@
         <mxCell id="stage3_box" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#e6fcf5;strokeColor=#0ca678;strokeWidth=2;shadow=0;" vertex="1" parent="1">
           <mxGeometry x="680" y="50" width="260" height="270" as="geometry"/>
         </mxCell>
-        <mxCell id="stage3_badge" value="STAGE 3: CONFLICT EVAL" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#0ca678;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
+        <mxCell id="stage3_badge" value="STAGE 3: VERIFICATION" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#0ca678;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="705" y="35" width="210" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="stage3_title" value="&lt;b&gt;Conflict Matrix Gates&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontFamily=Helvetica;fontColor=#1f2937;" vertex="1" parent="1">
           <mxGeometry x="700" y="75" width="220" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="stage3_item1" value="• Speed vs. Safety Assertions" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
-          <mxGeometry x="700" y="115" width="220" height="42" as="geometry"/>
+        <mxCell id="stage3_item1" value="• Conflict Matrix Evaluation" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="695" y="115" width="230" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="stage3_item2" value="• Edge-Case Isolation Tests" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
-          <mxGeometry x="700" y="167" width="220" height="42" as="geometry"/>
+        <mxCell id="stage3_item2" value="• Pre-Commit Zero-Token Hook" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="695" y="167" width="230" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="stage3_item3" value="• Deterministic Regression CI" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=12;align=left;spacingLeft=12;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
-          <mxGeometry x="700" y="219" width="220" height="42" as="geometry"/>
+        <mxCell id="stage3_item3" value="• Release Verification (`shipping-launch`)" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#ffffff;strokeColor=#63e6be;fontSize=11.5;align=left;spacingLeft=10;fontFamily=Helvetica;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="695" y="219" width="230" height="42" as="geometry"/>
         </mxCell>
-        <mxCell id="stage3_sub" value="Zero regressions across skill revisions" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#868e96;fontStyle=2;" vertex="1" parent="1">
+        <mxCell id="stage3_sub" value="Guarantees zero regression on release" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontFamily=Helvetica;fontColor=#868e96;fontStyle=2;" vertex="1" parent="1">
           <mxGeometry x="700" y="270" width="220" height="20" as="geometry"/>
         </mxCell>
 
@@ -88,7 +88,7 @@
         <mxCell id="bottom_banner" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#f8f9fa;strokeColor=#dee2e6;strokeWidth=1.5;" vertex="1" parent="1">
           <mxGeometry x="40" y="350" width="900" height="60" as="geometry"/>
         </mxCell>
-        <mxCell id="banner_text" value="&lt;b&gt;Invariant Guarantee:&lt;/b&gt; Dynamic context changes trigger re-evaluation across all 3 tiers. Safety (T1) constraints remain immutable." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=#495057;" vertex="1" parent="1">
+        <mxCell id="banner_text" value="&lt;b&gt;Continuous Precedence Loop:&lt;/b&gt; Dynamic context shifts re-route through Scope &amp; Triage without prompt leakage or bypassing Tier 1 security boundaries." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=#495057;" vertex="1" parent="1">
           <mxGeometry x="50" y="355" width="880" height="50" as="geometry"/>
         </mxCell>
 
