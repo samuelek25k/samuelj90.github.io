@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="100%" height="100%">
+  <defs>
+    <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+    <filter id="card-shadow" x="-4%" y="-3%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.05"/>
+    </filter>
+
+    <linearGradient id="header-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="tier1-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="tier2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="tier3-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="triage-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+
+    <!-- Markers -->
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#F8FAFC" rx="16"/>
+
+  <!-- Top Header Banner -->
+  <g transform="translate(36, 26)">
+    <rect width="888" height="66" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#soft-shadow)"/>
+    <rect x="16" y="15" width="36" height="36" rx="8" fill="url(#header-grad)"/>
+    <text x="34" y="39" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="18" fill="#FFFFFF">S</text>
+    
+    <text x="64" y="34" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="16" fill="#0F172A">@samuelj90</text>
+    <text x="64" y="49" font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="11" fill="#64748B">Agent Architecture Series</text>
+
+    <text x="470" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="16" fill="#0F172A">Autonomous Scenario Prioritization</text>
+    <text x="470" y="52" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="11" fill="#64748B">Dynamic Triage • Tiered Precedence • Adversarial Verification</text>
+
+    <!-- Badge -->
+    <g transform="translate(820, 16)">
+      <rect width="52" height="34" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="26" y="22" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#334155">HARNESS</text>
+    </g>
+  </g>
+
+  <!-- STEP 1: Incoming Context & Ambiguity Triage -->
+  <g transform="translate(36, 114)" filter="url(#card-shadow)">
+    <rect width="424" height="150" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+    <rect x="16" y="16" width="28" height="28" rx="8" fill="url(#triage-grad)"/>
+    <text x="30" y="35" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="13" fill="#FFFFFF">1</text>
+    <text x="54" y="35" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="15" fill="#0F172A">Intent-Based Triage Layer</text>
+
+    <!-- Content inside step 1 -->
+    <rect x="16" y="56" width="392" height="38" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="28" y="74" font-family="'JetBrains Mono', monospace" font-size="11" fill="#475569">Incoming: Prompt + Workspace State + Tools</text>
+    <text x="28" y="87" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#94A3B8">Detects: User Urgency • Complexity • Ambiguity</text>
+
+    <g transform="translate(16, 102)">
+      <rect width="188" height="34" rx="6" fill="#EDE9FE"/>
+      <text x="94" y="21" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="11" fill="#6D28D9">⚡ Fast Direct Triage</text>
+    </g>
+    <g transform="translate(220, 102)">
+      <rect width="188" height="34" rx="6" fill="#FEF3C7"/>
+      <text x="94" y="21" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="11" fill="#92400E">❓ Ambiguity Clarification</text>
+    </g>
+  </g>
+
+  <!-- STEP 2: Fallback & Confidence Gates -->
+  <g transform="translate(500, 114)" filter="url(#card-shadow)">
+    <rect width="424" height="150" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+    <rect x="16" y="16" width="28" height="28" rx="8" fill="#0284c7"/>
+    <text x="30" y="35" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="13" fill="#FFFFFF">2</text>
+    <text x="54" y="35" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="15" fill="#0F172A">Confidence &amp; Utility Scoring</text>
+
+    <rect x="16" y="56" width="392" height="78" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="28" y="76" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155">• Score = P(success) × Utility − Token &amp; Latency Cost</text>
+    <text x="28" y="96" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155">• If Confidence &lt; Threshold → Non-destructive Fallback</text>
+    <text x="28" y="116" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155">• Edge Case Isolation: Prevents global prompt pollution</text>
+  </g>
+
+  <!-- Connection: 1 -> 2 -->
+  <path d="M 460 189 L 492 189" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-slate)"/>
+
+  <!-- STEP 3: The 3 Precedence Tiers (Main Architecture) -->
+  <g transform="translate(36, 286)">
+    <rect width="888" height="236" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#card-shadow)"/>
+    
+    <!-- Title Section -->
+    <text x="24" y="32" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="15" fill="#0F172A">STEP 3: Strict Precedence Tiers (Non-Negotiable Hierarchy)</text>
+    <text x="24" y="50" font-family="'Inter', system-ui, sans-serif" font-size="11" fill="#64748B">Higher tiers unconditionally override lower tiers in any conflict</text>
+
+    <!-- TIER 1 -->
+    <g transform="translate(20, 68)">
+      <rect width="268" height="150" rx="10" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+      <rect x="14" y="14" width="22" height="22" rx="6" fill="url(#tier1-grad)"/>
+      <text x="25" y="29" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="12" fill="#FFFFFF">T1</text>
+      <text x="44" y="30" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="13" fill="#991B1B">Safety &amp; Invariants</text>
+      
+      <text x="14" y="60" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="11" fill="#7F1D1D">PRIORITY: ABSOLUTE</text>
+      <text x="14" y="80" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#B91C1C">• Zero credential leakage</text>
+      <text x="14" y="98" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#B91C1C">• Workspace sandbox limits</text>
+      <text x="14" y="116" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#B91C1C">• Compliance &amp; safety barriers</text>
+      <text x="14" y="134" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#B91C1C">• Invariant contracts &amp; git gates</text>
+    </g>
+
+    <!-- Override arrow T1 -> T2 -->
+    <g transform="translate(296, 134)">
+      <path d="M 0 0 L 16 0" fill="none" stroke="#DC2626" stroke-width="2" marker-end="url(#arrow-slate)"/>
+      <text x="8" y="-8" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#DC2626">OVERRIDES</text>
+    </g>
+
+    <!-- TIER 2 -->
+    <g transform="translate(320, 68)">
+      <rect width="268" height="150" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+      <rect x="14" y="14" width="22" height="22" rx="6" fill="url(#tier2-grad)"/>
+      <text x="25" y="29" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="12" fill="#FFFFFF">T2</text>
+      <text x="44" y="30" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="13" fill="#1E40AF">Core Task Execution</text>
+      
+      <text x="14" y="60" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="11" fill="#1E3A8A">PRIORITY: ADAPTIVE</text>
+      <text x="14" y="80" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#1D4ED8">• Functional correctness</text>
+      <text x="14" y="98" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#1D4ED8">• Contextual tool invocation</text>
+      <text x="14" y="116" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#1D4ED8">• AST &amp; architectural alignment</text>
+      <text x="14" y="134" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#1D4ED8">• Test contract verification</text>
+    </g>
+
+    <!-- Override arrow T2 -> T3 -->
+    <g transform="translate(596, 134)">
+      <path d="M 0 0 L 16 0" fill="none" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow-slate)"/>
+      <text x="8" y="-8" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#2563EB">OVERRIDES</text>
+    </g>
+
+    <!-- TIER 3 -->
+    <g transform="translate(620, 68)">
+      <rect width="248" height="150" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.5"/>
+      <rect x="14" y="14" width="22" height="22" rx="6" fill="url(#tier3-grad)"/>
+      <text x="25" y="29" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="12" fill="#FFFFFF">T3</text>
+      <text x="44" y="30" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="13" fill="#065F46">Presentation &amp; Style</text>
+      
+      <text x="14" y="60" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="11" fill="#064E3B">PRIORITY: SOFT</text>
+      <text x="14" y="80" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#047857">• Output formatting &amp; tone</text>
+      <text x="14" y="98" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#047857">• Code cosmetic preferences</text>
+      <text x="14" y="116" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#047857">• Explanatory verbosity level</text>
+      <text x="14" y="134" font-family="'Inter', system-ui, sans-serif" font-size="10.5" fill="#047857">• Syntactic sugar preferences</text>
+    </g>
+  </g>
+
+  <!-- STEP 4: Evaluation via Conflict Matrix -->
+  <g transform="translate(36, 542)" filter="url(#card-shadow)">
+    <rect width="888" height="114" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+    <rect x="16" y="14" width="28" height="28" rx="8" fill="#0f172a"/>
+    <text x="30" y="33" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="13" fill="#FFFFFF">4</text>
+    <text x="54" y="33" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="15" fill="#0F172A">Adversarial Evaluation via Conflict Matrices</text>
+
+    <g transform="translate(16, 52)">
+      <rect width="270" height="46" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="14" y="20" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" fill="#0F172A">Test: Speed vs. Safety</text>
+      <text x="14" y="36" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#64748B">Result: T1 safety blocks fast bypass</text>
+    </g>
+    <g transform="translate(306, 52)">
+      <rect width="270" height="46" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="14" y="20" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" fill="#0F172A">Test: Verbosity vs. Speed</text>
+      <text x="14" y="36" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#64748B">Result: T2 task speed clips T3 style</text>
+    </g>
+    <g transform="translate(596, 52)">
+      <rect width="276" height="46" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="14" y="20" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" fill="#0F172A">Test: Ambiguity vs. Guesswork</text>
+      <text x="14" y="36" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#64748B">Result: Clarifying fallback triggered</text>
+    </g>
+  </g>
+</svg>

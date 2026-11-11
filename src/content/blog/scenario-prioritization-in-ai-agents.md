@@ -13,9 +13,27 @@ When an agent cannot reliably prioritize which instruction, constraint, or scena
 
 ---
 
+## The Scenario Prioritization Architecture
+
+To manage competing constraints without bloating prompt windows or introducing brittle edge-case patches, production systems decouple triage, precedence rules, and automated evaluation into distinct architectural layers:
+
+<figure class="my-8 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-4 sm:p-6 shadow-sm">
+  <img
+    src="/diagrams/scenario-prioritization-architecture.svg"
+    alt="Autonomous Scenario Prioritization Architecture Diagram"
+    class="w-full h-auto rounded-lg mx-auto max-w-4xl"
+    loading="lazy"
+  />
+  <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
+    Figure 1: Autonomous Scenario Prioritization Architecture • Intent Triage, Precedence Tiers, and Conflict Matrix Verification
+  </figcaption>
+</figure>
+
+---
+
 ## Why Scenario Prioritization Is Difficult
 
-Unlike traditional software architectures where execution order is explicitly handled via static conditional branching, agentic systems rely heavily on probabilistic model interpretation of system instructions, runtime context, and user inputs. This makes priority resolution uniquely challenging across several dimensions:
+Unlike traditional software architectures where execution order is explicitly handled via static conditional branching, agentic systems rely heavily on probabilistic model interpretation of system instructions, runtime context, and user inputs. This creates four primary sources of friction:
 
 ### 1. Conflicting Objectives
 Prompts and agents must balance speed, operational cost, thoroughness, and safety simultaneously. Optimizing for one objective almost invariably degrades another:
@@ -43,34 +61,16 @@ Hardcoded, static priority lists work smoothly for linear, predictable tasks. Ho
 
 To build resilient agents that remain dependable under real-world ambiguity, modern AI architectures employ four core structural patterns:
 
-```
-┌────────────────────────────────────────────────────────┐
-│                   User / System Input                  │
-└───────────────────────────┬────────────────────────────┘
-                            │
-                            ▼
-               [ Intent-Based Triage / Router ]
-                            │
-       ┌────────────────────┼────────────────────┐
-       ▼                    ▼                    ▼
- Tier 1: Safety &     Tier 2: Core Task    Tier 3: Formatting &
- Invariants (Strict)   Execution (Adaptive) Style (Soft)
-       │                    │                    │
-       └────────────────────┼────────────────────┘
-                            ▼
-              [ Explicit Fallback & Scoring ]
-                            │
-                            ▼
-                Deterministic Execution & Tooling
-```
-
-### 1. Tiered Rule Hierarchies
+### 1. Strict Tiered Rule Hierarchies
 Establish explicit precedence tiers so non-negotiable constraints always dominate secondary preferences:
-- **Tier 1 (Invariants & Safety)**: Never leak credentials or sensitive data, respect workspace boundaries, adhere to compliance rules.
-- **Tier 2 (Core Task Fulfillment)**: Functional correctness, architectural alignment, appropriate tool selection.
-- **Tier 3 (Style & Format)**: Verbosity preferences, markdown styling, cosmetic conventions.
 
-By standardizing these tiers in your system instructions, the agent knows unambiguously that an instruction from Tier 3 can never override a constraint from Tier 1.
+| Precedence Tier | Scope &amp; Responsibilities | Mutability | Examples |
+| :--- | :--- | :--- | :--- |
+| **Tier 1: Safety &amp; Invariants** | Absolute boundaries, regulatory compliance, workspace sandboxes | **Non-negotiable** | Zero credential leakage, sandbox escape prevention, immutable test contracts |
+| **Tier 2: Core Task Execution** | Functional correctness, tool orchestration, architectural alignment | **Adaptive** | AST verification, correct API parameter schemas, test execution loops |
+| **Tier 3: Presentation &amp; Style** | Formatting conventions, tone, syntax sugar, verbosity | **Soft preference** | Markdown styling, code formatting nuances, commentary density |
+
+> **Precedence Invariant:** Lower-tier directives can never override higher-tier constraints. Even if a user explicitly requests concise unformatted output, safety audits and compilation verification cannot be bypassed.
 
 ### 2. Intent-Based Routing
 Rather than loading a monolithic prompt with all possible instructions, insert a lightweight classifier or triage step upfront. This triage layer inspects the user prompt, determines the primary scenario (e.g., quick query, structural refactor, incident remediation), and routes execution to a specialized agent profile or tailored skill set.
@@ -81,7 +81,9 @@ Define deterministic behaviors for situations where priorities collide or contex
 - In multi-path scenarios with equal priority, default to the least destructive, non-mutating action first (e.g., inspecting/reading before writing or deleting).
 
 ### 4. Weighted Scoring and Utility Thresholds
-In autonomous multi-agent systems and complex tool-use loops, discrete boolean rules often fall short. Assigning confidence scores or utility weights to candidate actions enables the agent to evaluate the highest-value step dynamically based on token cost, execution time, and expected utility.
+In autonomous multi-agent systems and complex tool-use loops, discrete boolean rules often fall short. Assigning confidence scores or utility weights to candidate actions enables the agent to evaluate the highest-value step dynamically based on token cost, execution time, and expected utility:
+
+$$\text{Action Utility} = P(\text{Success}) \times \text{Expected Value} - (\text{Token Cost} + \text{Latency Penalty})$$
 
 ---
 
@@ -94,9 +96,16 @@ Avoid stuffing every rule into a root system prompt. Split large prompt files in
 
 ### Test Against Conflict Matrices
 Unit testing AI systems requires more than verifying happy paths. Build evaluation sets specifically designed to pit rules against each other in a **conflict matrix**:
-- Does the formatting preference violate the safety rule?
-- Does the speed optimization bypass critical verification?
-- Does a low-priority edge-case instruction override a core invariant?
+
+```
+                  ┌───────────────────────┬─────────────────────────┬─────────────────────────┐
+                  │ Rule A: Maximum Speed │ Rule B: Full AST Audit  │ Rule C: Format Strictness│
+┌─────────────────┼───────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Conflict Test 1 │ Speed vs. Safety      │ → Block bypass (T1 wins)│ —                       │
+│ Conflict Test 2 │ Speed vs. Formatting  │ —                       │ → Speed overrides T3    │
+│ Conflict Test 3 │ Audit vs. Ambiguity   │ → Ask user first        │ —                       │
+└─────────────────┴───────────────────────┴─────────────────────────┴─────────────────────────┘
+```
 
 Systematically evaluating your agent against conflicting scenarios ensures that your tiering and triage mechanisms behave deterministically when under pressure.
 
