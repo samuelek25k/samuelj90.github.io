@@ -6,6 +6,15 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --container-shell: 72rem;
+  --spacing-gutter: clamp(1rem, 3vw, 2rem);
+}
+
+@utility shell {
+  width: 100%;
+  max-width: var(--container-shell);
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
 }
 
 html {
