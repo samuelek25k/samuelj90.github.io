@@ -71,7 +71,7 @@ sequenceDiagram
     loading="lazy"
   />
   <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
-    Figure 2: Transactional Outbox Component Blueprint • Hand-drawn draw.io diagram (editable with embedded XML)
+    Figure 2: Transactional Outbox Component Blueprint • Atomic Persistence and Reliable Event Streaming
   </figcaption>
 </figure>
 

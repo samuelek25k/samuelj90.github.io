@@ -27,7 +27,7 @@ QRIMS is structured as a decoupled multi-tier system:
     loading="lazy"
   />
   <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
-    Figure 1: QRIMS Multi-Tenant Cloud Architecture • Mobile Scanner, NestJS Reactive Engine & Next.js Console (editable with embedded XML)
+    Figure 1: QRIMS Multi-Tenant Cloud Architecture • Mobile Scanner, NestJS Reactive Engine & Next.js Console
   </figcaption>
 </figure>
 

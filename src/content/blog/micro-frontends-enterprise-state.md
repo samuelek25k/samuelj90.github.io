@@ -68,7 +68,7 @@ For communication between independently implemented micro-apps, such as an Angul
     loading="lazy"
   />
   <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
-    Figure 1: Micro-frontend state sharing through a CustomEvent DOM event broker (editable with embedded XML)
+    Figure 1: Micro-frontend state sharing through a CustomEvent DOM event broker
   </figcaption>
 </figure>
 

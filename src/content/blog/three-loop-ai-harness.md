@@ -27,7 +27,7 @@ Most agent failures do not stem from reasoning deficiencies, but rather from unc
     loading="lazy"
   />
   <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
-    Figure 1: The Three-Loop AI Engineering Harness • Hand-drawn draw.io diagram (editable with embedded XML)
+    Figure 1: The Three-Loop AI Engineering Harness • Nested Governance, Contract Verification, and Pre-Commit Execution Loops
   </figcaption>
 </figure>
 

@@ -23,7 +23,7 @@ Crypto-Util wraps the battle-tested, hardware-accelerated C++ OpenSSL engine bui
     loading="lazy"
   />
   <figcaption class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4 font-mono">
-    Figure 1: crypto-util Zero-Dependency Architecture • Application Layer to Node.js Hardware OpenSSL (editable with embedded XML)
+    Figure 1: crypto-util Zero-Dependency Architecture • Application Layer to Node.js Hardware OpenSSL
   </figcaption>
 </figure>
 
