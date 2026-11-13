@@ -1,37 +1,63 @@
-name: Engineering Quality Gate & Code Standards
+name: Quality Gate
 
 on:
-  push:
-    branches: [ main, master ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
+  workflow_call:
 
 permissions:
   contents: read
-  security-events: write
 
 jobs:
-  quality-gate:
-    name: Code Standards, Linting & Security Gate
+  verify:
+    name: Types, build and secret scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
 
-      - name: Verify Git Commit Author Standardization
-        run: |
-          echo "Verifying commit metadata..."
-          git log -n 5 --format="Commit %h by %an <%ae>"
-          # Ensure commits are authored by verified email
-          INVALID_COMMITS=$(git log -n 1 --format="%ae" | grep -v -E "(samuelj90@gmail.com|users.noreply.github.com|dependabot)" || true)
-          if [ -n "$INVALID_COMMITS" ]; then
-            echo "⚠️ Notice: Commit author email $INVALID_COMMITS differs from primary engineering email."
-          fi
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: npm
 
-      - name: Secret & Credential Leak Scan
-        uses: gitleaks/gitleaks-action@v2
-        continue-on-error: true
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type and content check
+        run: npm run check
+
+      - name: Build site
+        run: npm run build
+
+      - name: Secret and credential scan
+        uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2.3.9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  authorship:
+    name: Commit author standardisation
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Verify author emails on this branch
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          allowed=' (samuelj90@gmail\.com|[^ ]+@users\.noreply\.github\.com)$'
+          invalid=$(git log --format='%H %ae' "$BASE_SHA..$HEAD_SHA" | grep -Ev "$allowed" || true)
+          if [ -n "$invalid" ]; then
+            echo "Commits with a non-standard author email:"
+            echo "$invalid"
+            exit 1
+          fi
+          echo "All commit author emails conform."

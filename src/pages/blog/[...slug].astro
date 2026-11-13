@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import GistInline from '../../components/GistInline.astro';
 import MermaidRenderer from '../../components/MermaidRenderer.astro';
 import { processBlogContent } from '../../utils/gist';
+import { formatDate, isoDate } from '../../utils/date';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -33,7 +34,7 @@ const articleSchema = {
     "name": "Samuel J Mathew",
     "url": "https://samuelj90.github.io"
   },
-  "datePublished": post.data.date,
+  "datePublished": isoDate(post.data.date),
   "applicationCategory": isProductArticle ? "DeveloperApplication" : undefined,
   "operatingSystem": isProductArticle ? "Cross-platform" : undefined
 };
@@ -60,7 +61,7 @@ const articleSchema = {
           {post.data.category}
         </span>
         <span>•</span>
-        <time datetime={post.data.date}>{post.data.date}</time>
+        <time datetime={isoDate(post.data.date)}>{formatDate(post.data.date)}</time>
         {post.data.readingTime && (
           <>
             <span>•</span>
@@ -76,7 +77,7 @@ const articleSchema = {
       </p>
     </div>
 
-    <div class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 space-y-6 leading-relaxed">
+    <div class="prose max-w-none text-slate-700 dark:text-slate-300 space-y-6 leading-relaxed">
       {postHtml ? (
         <Fragment set:html={postHtml} />
       ) : (

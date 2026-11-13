@@ -10,7 +10,7 @@ interface Props {
 }
 
 const {
-  title = "Samuel J Mathew | Senior Software Engineer • Technical Architect • Developer Advocate",
+  title = "Samuel J Mathew | Senior Software Engineer • Technical Architect",
   description = "Engineering portfolio & architecture showcase. Specializing in high-scale distributed backends, AI-native automation, JVM architectures, and resilient developer tooling.",
   image = "/assets/images/profile.png",
   type = "website",
@@ -22,48 +22,17 @@ const absoluteImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
 
-    <!-- Tailwind CDN Fallback (Guarantees all styles render whether opened directly as file:// or on HTTP server) -->
-    <script src="https://cdn.tailwindcss.com" is:inline></script>
-    <script is:inline>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                50: '#f0fdfa',
-                100: '#ccfbf1',
-                200: '#99f6e4',
-                300: '#5eead4',
-                400: '#2dd4bf',
-                500: '#14b8a6',
-                600: '#0d9488',
-                700: '#0f766e',
-                800: '#115e59',
-                900: '#134e4a',
-              },
-            },
-            fontFamily: {
-              sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
-              display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-              mono: ['"JetBrains Mono"', 'monospace'],
-            },
-          },
-        },
-      };
-    </script>
-
     <!-- Standard Primary SEO Meta -->
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content="Samuel J Mathew" />
-    <meta name="keywords" content="Samuel J Mathew, Senior Software Engineer, Technical Architect, Developer Advocate, Enterprise Java, Distributed Systems, Microservices, Spring Boot, Astro, AI Engineering, Dubai, UAE" />
+    <meta name="keywords" content="Samuel J Mathew, Senior Software Engineer, Technical Architect, Enterprise Java, Distributed Systems, Microservices, Spring Boot, Astro, AI Engineering, Dubai, UAE" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" href="/assets/images/profile.png" />
@@ -120,15 +89,43 @@ const absoluteImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`
       rel="stylesheet"
     />
 
-    <!-- Theme Initialization Script (Zero-Flash Dark Mode) -->
     <script is:inline>
-      (function() {
-        const storedTheme = localStorage.getItem('theme');
-        if (storedTheme === 'light') {
-          document.documentElement.classList.remove('dark');
-        } else {
-          document.documentElement.classList.add('dark');
-        }
+      (function () {
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        const stored = function () {
+          try {
+            return localStorage.getItem('theme');
+          } catch (e) {
+            return null;
+          }
+        };
+        const resolved = function () {
+          const choice = stored();
+          if (choice === 'dark' || choice === 'light') return choice;
+          return media.matches ? 'dark' : 'light';
+        };
+        const apply = function (theme) {
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+          document.documentElement.style.colorScheme = theme;
+          document.dispatchEvent(new CustomEvent('themechange', { detail: theme }));
+        };
+
+        window.themeController = {
+          resolved: resolved,
+          toggle: function () {
+            const next = resolved() === 'dark' ? 'light' : 'dark';
+            try {
+              localStorage.setItem('theme', next);
+            } catch (e) {}
+            apply(next);
+          },
+        };
+
+        media.addEventListener('change', function () {
+          if (!stored()) apply(resolved());
+        });
+
+        apply(resolved());
       })();
     </script>
   </head>
