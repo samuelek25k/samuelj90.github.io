@@ -30,7 +30,7 @@ const posts = (await getCollection('blog')).sort(
     <!-- Article Feed -->
     <div class="space-y-8">
       {posts.map((post) => (
-        <article class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm hover:shadow-md transition-all group">
+        <article class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xs hover:shadow-md transition-all group">
           <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-3">
             <span class="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/80 text-teal-800 dark:text-teal-300 font-semibold border border-transparent dark:border-teal-800/60">
               {post.data.category}

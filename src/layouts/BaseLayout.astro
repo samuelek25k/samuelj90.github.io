@@ -28,37 +28,6 @@ const absoluteImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
 
-    <!-- Tailwind CDN Fallback (Guarantees all styles render whether opened directly as file:// or on HTTP server) -->
-    <script src="https://cdn.tailwindcss.com" is:inline></script>
-    <script is:inline>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                50: '#f0fdfa',
-                100: '#ccfbf1',
-                200: '#99f6e4',
-                300: '#5eead4',
-                400: '#2dd4bf',
-                500: '#14b8a6',
-                600: '#0d9488',
-                700: '#0f766e',
-                800: '#115e59',
-                900: '#134e4a',
-              },
-            },
-            fontFamily: {
-              sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
-              display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-              mono: ['"JetBrains Mono"', 'monospace'],
-            },
-          },
-        },
-      };
-    </script>
-
     <!-- Standard Primary SEO Meta -->
     <meta name="title" content={title} />
     <meta name="description" content={description} />
